@@ -1,6 +1,6 @@
 {
     "env": {
-        "es2020": true,
+        "es2021": true,
         "node": true,
         "jest": true
     },
@@ -9,7 +9,6 @@
         "plugin:@typescript-eslint/recommended",
         "prettier",
         "plugin:prettier/recommended"
-
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -17,55 +16,60 @@
         "sourceType": "module"
     },
     "plugins": [
-        "prettier",
         "@typescript-eslint",
-        "eslint-plugin-import-helpers"
+        "eslint-plugin-import-helpers",
+        "prettier"
     ],
     "rules": {
-        "prettier/prettier": "error",
-        "camelcase": "off",
-        "import/no-unresolved": "error",
-        "@typescript-eslint/naming-convention": [
+      "camelcase": "off",
+      "import/no-unresolved": "error",
+      "@typescript-eslint/naming-convention": [
         "error",
         {
-            "selector": "interface",
-            "format": ["PascalCase"],
-            "custom": {
+          "selector": "interface",
+          "format": ["PascalCase"],
+          "custom": {
             "regex": "^I[A-Z]",
             "match": true
-            }
+          }
         }
-        ],
-        "class-methods-use-this": "off",
-        "import/prefer-default-export": "off",
-        "no-shadow": "off",
-        "no-console": "off",
-        "no-useless-constructor": "off",
-        "no-empty-function": "off",
-        "lines-between-class-members": "off",
-        "import/extensions": [
+      ],
+      "class-methods-use-this": "off",
+      "import/prefer-default-export": "off",
+      "no-shadow": "off",
+      "no-console": "off",
+      "no-useless-constructor": "off",
+      "no-empty-function": "off",
+      "lines-between-class-members": "off",
+      "import/extensions": [
         "error",
         "ignorePackages",
         {
-            "ts": "never"
+          "ts": "never"
         }
-        ],
-        "import-helpers/order-imports": [
+      ],
+      "import-helpers/order-imports": [
         "warn",
         {
-            "newlinesBetween": "always",
-            "groups": ["module", "/^@shared/", ["parent", "sibling", "index"]],
-            "alphabetize": { "order": "asc", "ignoreCase": true }
+          "newlinesBetween": "always",
+          "groups": ["module", "/^@shared/", ["parent", "sibling", "index"]],
+          "alphabetize": { "order": "asc", "ignoreCase": true }
         }
-        ],
-        "import/no-extraneous-dependencies": [
+      ],
+      "import/no-extraneous-dependencies": [
         "error",
         { "devDependencies": ["**/*.spec.js"] }
-        ]
+      ],
+      "prettier/prettier": "error"
     },
     "settings": {
-        "import/resolver": {
-          "typescript": {}
+      "import/resolver": {
+        "typescript": {},
+        "import/no-unresolved": "off",
+        "node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx"],
+            "moduleDirectory": ["node_modules", "src/"]
         }
+      }
     }
 }
