@@ -23,6 +23,9 @@
     "rules": {
       "camelcase": "off",
       "import/no-unresolved": "error",
+      "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx"]
+      },
       "@typescript-eslint/naming-convention": [
         "error",
         {
@@ -71,5 +74,9 @@
             "moduleDirectory": ["node_modules", "src/"]
         }
       }
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json"
     }
 }

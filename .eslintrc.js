@@ -17,5 +17,10 @@ module.exports = {
         'import/first': 'off',
         'no-param-reassign': 'off',
         'camelcase': 'off',
+        'import/prefer-default-export': 'off',
+        'parser': '@typescript-eslint/parser',
+        'parserOptions': {
+            'project': './tsconfig.json'
+        }
     },
 };
