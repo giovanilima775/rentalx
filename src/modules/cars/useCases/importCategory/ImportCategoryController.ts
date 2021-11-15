@@ -4,10 +4,16 @@ import { ImportCategoryUseCase } from './ImportCategoryUseCase';
 class ImportCategoryController {
     constructor(private importCategoryUsCase: ImportCategoryUseCase) {}
     handle(request: Request, response: Response): Response {
-        const { file } = request;
-        this.importCategoryUsCase.execute(file);
+        try{
+            const { file } = request;
+            this.importCategoryUsCase.execute(file);
 
-        return response.send();
+            return response.send();
+
+        }  catch (err) {
+            return response.status(400).json({ error: err.message });
+        }
+
     }
 }
 
