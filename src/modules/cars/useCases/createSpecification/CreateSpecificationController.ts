@@ -3,19 +3,19 @@ import { container } from 'tsyringe';
 import { CreateSpecificationUseCase } from '../createSpecification/CreateSpecificationUseCase';
 
 class CreateSpecificationController {
-    handle(request: Request, response: Response) : Response {
-        try{
+    handle(request: Request, response: Response): Response {
+        try {
             const { name, description } = request.body;
-            const createSpecificationUseCase = container.resolve(CreateSpecificationUseCase);
+            const createSpecificationUseCase = container.resolve(
+                CreateSpecificationUseCase,
+            );
             createSpecificationUseCase.execute({ name, description });
 
             return response.status(201).json();
-        }  catch (err) {
+        } catch (err) {
             return response.status(400).json({ error: err.message });
         }
-
     }
-
 }
 
 export { CreateSpecificationController };

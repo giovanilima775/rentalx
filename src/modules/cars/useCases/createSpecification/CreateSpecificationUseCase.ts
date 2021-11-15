@@ -7,18 +7,14 @@ interface IRequest {
 }
 @injectable()
 class CreateSpecificationUseCase {
-
     constructor(
         @inject('SpecificationsRepository')
         private specificationsRepository: ISpecificationsRepository,
     ) {}
 
-    execute({name, description}: IRequest): void {
-
+    execute({ name, description }: IRequest): void {
         this.specificationsRepository.create({ name, description });
     }
-
-
 }
 
 export { CreateSpecificationUseCase };
