@@ -18,7 +18,7 @@ class SpecificationsRepository implements ISpecificationsRepository {
         await this.repository.save(specification);
     }
 
-    async findByName(name: string): Promise<Specification | undefined> {
+    async findByName(name: string): Promise<Specification> {
         const specifications = await this.repository.findOne({ name });
         return specifications;
     }
