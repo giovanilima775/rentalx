@@ -8,7 +8,6 @@ class CategoriesRepositoryInMemory implements ICategoriesRepository {
     categories: Category[] = [];
 
     async findByName(name: string): Promise<Category> {
-        console.log('xzxx')
         const category = this.categories.find(
             (category) => category.name === name,
         );
