@@ -1,18 +1,18 @@
 import express from 'express';
 import "express-async-errors";
-import "./database";
+import "../typeorm";
 import "@shared/container";
 import { Request, Response, NextFunction } from 'express';
 
 import { router } from './routes/index';
 import swaggerUi from 'swagger-ui-express';
-import { AppError } from '@errors/AppError';
+import { AppError } from '@shared/errors/AppError';
 
 const app = express();
 
 app.use(express.json());
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(require('./swagger.json')));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(require('../../../swagger.json')));
 
 app.use(router);
 
