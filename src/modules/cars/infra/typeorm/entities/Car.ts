@@ -28,12 +28,17 @@ class Car {
     @Column()
     category_id: string;
 
+    @Column()
+    available: boolean;
+
     @CreateDateColumn()
     created_at: Date;
 
     constructor() {
         if (!this.id) {
             this.id = uuidv4()
+            this.available = true;
+            this.created_at = new Date();
         }
     }
 }
