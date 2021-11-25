@@ -76,6 +76,8 @@ $ git clone https://github.com/jhonnydelima/rentalx
 $ yarn
 #start the server
 $ yarn dev
+#create user admin
+$ yarn seed:admin
 ```
 
 ---
