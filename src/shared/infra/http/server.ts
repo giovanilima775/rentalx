@@ -1,6 +1,6 @@
 import express from 'express';
 import "express-async-errors";
-import "../typeorm";
+import createConnection from '@shared/infra/typeorm';
 import "@shared/container";
 import { Request, Response, NextFunction } from 'express';
 
