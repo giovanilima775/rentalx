@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
+import { ensureAdmin } from '../middlewares/ensureAdmin';
 
 import { CreateCarController } from '../../../../modules/cars/useCases/CreateCar/CreateCarController';
 
@@ -9,6 +10,6 @@ const createCarController = new CreateCarController();
 
 carsRoutes.use(ensureAuthenticated);
 
-carsRoutes.post('/', createCarController.handle);
+carsRoutes.post('/', ensureAuthenticated, ensureAdmin, createCarController.handle);
 
 export { carsRoutes };

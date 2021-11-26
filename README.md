@@ -63,14 +63,7 @@ Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para
 - PostgreSQL (https://www.postgresql.org/)
 
 ---
-### How to run this project:
-
-### 1. Clone this repository
-```
-$ git clone https://github.com/jhonnydelima/rentalx
-```
-
-### 2. Running the application on your terminal
+### Running the application on your terminal
 ```
 #install the dependencies
 $ yarn
