@@ -22,6 +22,14 @@ class CarsRepository implements ICarsRepository {
         return await this.repository.findOne({ license_plate });
     }
 
+    async findAvailable() {
+        return await this.repository.find({
+            where: {
+                available: true
+            }
+        });
+    }
+
 
 }
 
