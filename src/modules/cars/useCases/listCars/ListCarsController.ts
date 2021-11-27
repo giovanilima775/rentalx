@@ -1,8 +1,0 @@
-
-
-
-class ListCarsController {
-
-}
-
-export { ListCarsController };
