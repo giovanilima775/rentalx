@@ -1,23 +1,26 @@
 import { CreateCarSpecificationUseCase } from '@modules/cars/useCases/createCarSpecification/CreateCarSpecificationUseCase';
 import { CarsRepositoryInMemory } from '@modules/cars/repositories/in-memory/CarsRepositoryInMemory';
+import { SpecificationsRepositoryInMemory } from '@modules/cars/repositories/in-memory/SpecificationsRepositoryInMemory';
 import { AppError } from '@shared/errors/AppError';
 
 
 let carsRepositoryInMemory: CarsRepositoryInMemory;
 let createCarSpecificationUseCase: CreateCarSpecificationUseCase;
+let specificationsRepositoryInMemory: SpecificationsRepositoryInMemory;
 
 describe("Create car", () => {
     beforeEach(() => {
         carsRepositoryInMemory = new CarsRepositoryInMemory();
-        createCarSpecificationUseCase = new CreateCarSpecificationUseCase(carsRepositoryInMemory);
+        specificationsRepositoryInMemory = new SpecificationsRepositoryInMemory();
+        createCarSpecificationUseCase = new CreateCarSpecificationUseCase(carsRepositoryInMemory, specificationsRepositoryInMemory);
     });
     it("should not be able to add a new specification to a nonexistent car", async () => {
 
 
         expect(async () => {
-            const car_id = "123";
-            const specification_id = ["51442"];
-            await createCarSpecificationUseCase.execute({car_id, specification_id});
+            const car_id = "1234";
+            const specifications_id = ["54321"];
+            await createCarSpecificationUseCase.execute({car_id, specifications_id});
         }).rejects.toBeInstanceOf(AppError);
     })
     it("should be able to add a new specification to the car", async () => {
@@ -33,7 +36,7 @@ describe("Create car", () => {
         });
 
         const car_id = car.id;
-        const specification_id = ["51442"];
-        await createCarSpecificationUseCase.execute({car_id, specification_id});
+        const specifications_id = ["51442"];
+        await createCarSpecificationUseCase.execute({car_id, specifications_id});
     })
 })
