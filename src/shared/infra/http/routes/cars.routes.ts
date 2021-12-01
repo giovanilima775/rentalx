@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 import { ensureAdmin } from '../middlewares/ensureAdmin';
 
-import { CreateCarController } from '../../../../modules/cars/useCases/CreateCar/CreateCarController';
+import { CreateCarController } from '../../../../modules/cars/useCases/createCar/CreateCarController';
 import { ListAvailableCarsController } from '@modules/cars/useCases/ListAvailableCars/ListAvailableCarsController';
 import { CreateCarSpecificationController } from '@modules/cars/useCases/createCarSpecification/CreateCarSpecificationController';
 
