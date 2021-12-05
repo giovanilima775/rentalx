@@ -1,7 +1,11 @@
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+
 import { AppError } from '@shared/errors/AppError';
 import { IRentalsRepository } from '@modules/rentals/repositories/IRentalsRepository';
 import { Rental } from '@modules/rentals/infra/typeorm/entities/Rental';
 
+dayjs.extend(utc);
 interface IRequest{
     user_id: string;
     car_id: string;
@@ -12,6 +16,7 @@ class CreateRentalUseCase {
     constructor(private rentalsRepository: IRentalsRepository) {}
 
     async execute({ user_id, car_id, expected_return_date }: IRequest): Promise<Rental> {
+        const minimumHours = 24;
         const carUnavailable = await this.rentalsRepository.findOpenRentalByCar(car_id);
 
         if (carUnavailable) {
@@ -22,6 +27,15 @@ class CreateRentalUseCase {
 
         if (rentalOpenToUser) {
             throw new AppError('User already has an open rental');
+        }
+
+        const expectedReturnDateFormat = dayjs(expected_return_date).utc().local().format();
+        const dateNow = dayjs().utc().local().format();
+
+        const compare = dayjs(expectedReturnDateFormat).diff(dateNow, 'hours');
+
+        if(compare < minimumHours) {
+            throw new AppError('Expected return date must be at least 24 hours from now');
         }
 
         const rental = await this.rentalsRepository.create({
