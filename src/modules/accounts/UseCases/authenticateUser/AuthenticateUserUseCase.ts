@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 import { IUserRepository } from '@modules/accounts/repositories/IUserRepository';
-import { compare } from 'bcrypt';
+import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { AppError } from '@shared/errors/AppError';
 interface IRequest {

@@ -9,7 +9,7 @@ import { router } from './routes/index';
 import swaggerUi from 'swagger-ui-express';
 import { AppError } from '@shared/errors/AppError';
 
-createConnection();
+createConnection("localhost");
 const app = express();
 
 app.use(express.json());
